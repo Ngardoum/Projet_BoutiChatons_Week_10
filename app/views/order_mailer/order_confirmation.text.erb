@@ -1,0 +1,14 @@
+Merci pour votre commande, <%= @order.user.name %> !
+
+Votre commande <%= @order.id %> a été reçue avec succès et est en cours de traitement.
+
+Détails de la commande :
+<% @order.cart_items.each do |item| %>
+<%= item.product.title %> - Quantité : <%= item.quantity %> - Total : <%= number_to_currency(item.quantity * item.product.price) %>
+<% end %>
+
+Total de la commande : <%= number_to_currency(@order.cart_items.sum('quantity * price')) %>
+
+Merci pour votre achat !
+
+Pour toute question, veuillez nous contacter à support@yourdomain.com.

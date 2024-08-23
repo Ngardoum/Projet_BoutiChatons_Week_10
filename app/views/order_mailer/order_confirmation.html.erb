@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+  <h1>Merci pour votre commande, <%= @order.user.name %> !</h1>
+  <p>Votre commande <%= @order.id %> a été reçue avec succès et est en cours de traitement.</p>
+  
+  <h2>Détails de la commande :</h2>
+  <ul>
+    <% @order.cart_items.each do |item| %>
+      <li>
+        <%= item.product.title %> - Quantité : <%= item.quantity %> - Total : <%= number_to_currency(item.quantity * item.product.price) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <p>Total de la commande : <%= number_to_currency(@order.cart_items.sum('quantity * price')) %></p>
+
+  <p>Merci pour votre achat !</p>
+  
+  <p>Pour toute question, veuillez nous contacter à <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>.</p>
+</body>
+</html>

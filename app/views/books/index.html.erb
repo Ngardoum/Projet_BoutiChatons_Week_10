@@ -1,0 +1,11 @@
+<h1>Liste des Livres</h1>
+
+<%= form_with(model: @book, local: true) do |form| %>
+  <%= form.label :title, "Titre du livre" %>
+  <%= form.text_field :title %>
+  <%= form.submit "Ajouter" %>
+<% end %>
+
+<ul id="books">
+  <%= render @books %>
+</ul>

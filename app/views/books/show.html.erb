@@ -1,0 +1,19 @@
+<h1><%= @book.title %></h1>
+
+<h2>Ajouter un Tag</h2>
+<%= form_with(model: [@book, Tag.new], local: true) do |form| %>
+  <%= form.label :name, "Nom du tag" %>
+  <%= form.text_field :name %>
+  <%= form.submit "Ajouter Tag" %>
+<% end %>
+
+<h3>Tags :</h3>
+<ul id="tags">
+  <%= render @book.tags %>
+</ul>
+
+<%= form_with(model: [@book, Tag.new], remote: true) do |form| %>
+  <%= form.label :name, "Nom du tag" %>
+  <%= form.text_field :name %>
+  <%= form.submit "Ajouter Tag" %>
+<% end %>

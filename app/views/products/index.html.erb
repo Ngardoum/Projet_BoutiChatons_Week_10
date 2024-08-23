@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="my-4">Bienvenue sur notre Boutique de Chatons !</h1>
+
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <%= image_tag product.image_url, class: 'card-img-top', alt: product.title %>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %></h5>
+            <p class="card-text"><%= number_to_currency(product.price, unit: "€") %></p>
+            <%= link_to 'Voir Détail', product_path(product), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
